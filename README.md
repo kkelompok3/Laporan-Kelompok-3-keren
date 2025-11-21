@@ -47,9 +47,8 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 1.  Melakukan *update* dan *upgrade* sistem.
     ```bash
     sudo apt update
-sudo apt install gnupg2 ca-certificates -y
-wget -O - https://repo.litespeed.sh | sudo bash
-sudo apt install openlitespeed -y
+    sudo apt upgrade
+
 
     ```
 2.  Memastikan konfigurasi jaringan (Bridge/NAT/Host-Only) sudah benar.
@@ -61,9 +60,10 @@ Kami menggunakan **[Open lite speed (OLS)]**. Berikut langkah-langkah utamanya:
 * **Instalasi:**
     ```bash
     sudo apt update
-sudo apt install gnupg2 ca-certificates -y
-wget -O - https://repo.litespeed.sh | sudo bash
-sudo apt install openlitespeed -y
+    sudo apt install gnupg2 ca-certificates -y
+    wget -O - https://repo.litespeed.sh | sudo bash
+    sudo apt install openlitespeed -y
+
 
     ```
 * **Konfigurasi Virtual Host/Server Block:**
@@ -83,11 +83,12 @@ Mengatur listener port 80 → diarahkan ke Default Virtual Host.]
 
 #### 2.3. Konfigurasi PHP 🐘
 
-Kami menggunakan **[JENIS PHP: mod_php / php-fpm / lsphp]** untuk mengintegrasikan PHP dengan *Web Server*.
+Kami menggunakan lsphp sebagai modul PHP bawaan OpenLiteSpeed.
 
 * **Instalasi PHP:**
     ```bash
-    # [Tuliskan perintah instalasi PHP dan modul yang dibutuhkan]
+    # [sudo apt install lsphp81 lsphp81-common lsphp81-mysql lsphp81-curl lsphp81-xml lsphp81-zip -y]
+
     sudo apt install php-fpm php-mysql
     ```
 * **Integrasi:**
