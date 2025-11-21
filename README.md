@@ -34,9 +34,9 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 | **Sistem Operasi Tamu (Guest OS)** | Debian Trixie (12.x) |
 | **Alamat IP Server** | `103.193.178.63` |
 | **RAM VM** | 2Gb |
-| **vCPU** | [Jumlah Core CPU yang dialokasikan untuk VM, contoh: 2 Core] |
-| **Web Server yang Dipilih** | **[Apache2 / Nginx / OpenLiteSpeed]** |
-| **Versi PHP yang Dipakai** | **[mod_php / php-fpm / lsphp]** |
+| **vCPU** | 2 Core |
+| **Web Server yang Dipilih** | **OpenLiteSpeed** |
+| **Versi PHP yang Dipakai** | **lsphp** |
 
 ---
 
