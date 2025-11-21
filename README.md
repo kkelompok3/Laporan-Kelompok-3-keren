@@ -46,20 +46,40 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 
 1.  Melakukan *update* dan *upgrade* sistem.
     ```bash
-    sudo apt update && sudo apt upgrade -y
+    sudo apt update
+sudo apt install gnupg2 ca-certificates -y
+wget -O - https://repo.litespeed.sh | sudo bash
+sudo apt install openlitespeed -y
+
     ```
 2.  Memastikan konfigurasi jaringan (Bridge/NAT/Host-Only) sudah benar.
 
 #### 2.2. Instalasi dan Konfigurasi Web Server 🌐
 
-Kami menggunakan **[NAMA WEB SERVER]**. Berikut langkah-langkah utamanya:
+Kami menggunakan **[Open lite speed (OLS)]**. Berikut langkah-langkah utamanya:
 
 * **Instalasi:**
     ```bash
-    # [Tuliskan perintah instalasi Web Server Kalian, contoh: sudo apt install nginx -y]
+    sudo apt update
+sudo apt install gnupg2 ca-certificates -y
+wget -O - https://repo.litespeed.sh | sudo bash
+sudo apt install openlitespeed -y
+
     ```
 * **Konfigurasi Virtual Host/Server Block:**
-    [Jelaskan secara singkat penyesuaian konfigurasi yang Kalian lakukan pada file utama, misalnya penentuan Document Root dan port.]
+    [Konfigurasi Virtual Host/Server Block:
+
+Mengubah Document Root di:
+
+/usr/local/lsws/conf/vhosts/Example/vhconf.conf
+
+
+Document Root diarahkan ke:
+
+/usr/local/lsws/Example/html/
+
+
+Mengatur listener port 80 → diarahkan ke Default Virtual Host.]
 
 #### 2.3. Konfigurasi PHP 🐘
 
