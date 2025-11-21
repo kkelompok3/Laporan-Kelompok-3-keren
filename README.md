@@ -87,20 +87,49 @@ Kami menggunakan lsphp sebagai modul PHP bawaan OpenLiteSpeed.
 
 * **Instalasi PHP:**
     ```bash
-    # [sudo apt install lsphp81 lsphp81-common lsphp81-mysql lsphp81-curl lsphp81-xml lsphp81-zip -y]
+    sudo apt install lsphp81 lsphp81-common lsphp81-mysql lsphp81-curl lsphp81-xml lsphp81-zip -y
 
     sudo apt install php-fpm php-mysql
     ```
 * **Integrasi:**
-    [Jelaskan langkah-langkah integrasi antara PHP dengan Web Server yang Kalian pilih.]
+    Integrasi PHP dengan OpenLiteSpeed:
+
+Menambahkan eksternal app dengan type LiteSpeed SAPI App via Web Admin Panel.
+
+Menambahkan script handler agar file .php diproses oleh lsphp81.
+
+Path eksekusi PHP biasanya:
+```path php
+/usr/local/lsws/lsphp81/bin/lsphp
+```
 
 #### 2.4. Implementasi SSL (HTTPS) 🔒
 
-Untuk mengaktifkan akses HTTPS, kami membuat *self-signed certificate*.
+Kami menggunakan self-signed certificate untuk mengaktifkan HTTPS.
 
 1.  Membuat direktori untuk *certificate*.
+   ``` Bash
+sudo mkdir -p /etc/ssl/litespeed/
+```
 2.  Membuat *Key* dan *Certificate* menggunakan OpenSSL.
-3.  Memodifikasi konfigurasi *Web Server* untuk menggunakan port **443** dan menunjuk ke *certificate* yang telah dibuat, serta memastikan akses dapat dilakukan melalui `https://[IP_SERVER]`.
+   ```bash
+sudo openssl req -x509 -nodes -days 365 \
+-newkey rsa:2048 \
+-keyout /etc/ssl/litespeed/self.key \
+-out /etc/ssl/litespeed/self.crt
+```
+3.  Konfigurasi Listener HTTPS di OpenLiteSpeed:
+
+Buka panel admin:
+https://IP_SERVER:7080
+
+Listener → Add → Port: 443
+
+Pilih SSL Certificate & Key:
+```pilih
+/etc/ssl/litespeed/self.crt
+/etc/ssl/litespeed/self.key
+```
 
 ---
 
@@ -111,8 +140,8 @@ Berdasarkan pengalaman kami dalam proyek ini, berikut adalah analisis kelebihan 
 | Aspek | Kelebihan ([NAMA WEB SERVER]) 👍 | Kekurangan ([NAMA WEB SERVER]) 👎 |
 | :--- | :--- | :--- |
 | **Performa & Kecepatan** | [Tuliskan kelebihannya.] | [Tuliskan kekurangannya.] |
-| **Kemudahan Konfigurasi**| [Tuliskan kelebihannya.] | [Tuliskan kekurangannya.] |
-| **Fitur & Modularitas** | [Tuliskan kelebihannya.] | [Tuliskan kekurangannya.] |
+| **Kemudahan Konfigurasi**| Tersedia web admin GUI Sehingga konfigurasi gampang| [Struktur konfigurasi berbeda dari Apache/Nginx, perlu adaptasi.] |
+| **Fitur & Modularitas** | [Built-in cache (LSCache) sangat cepat, dukungan OpenLiteSpeed API.] | [Tuliskan kekurangannya.] |
 
 ---
 
