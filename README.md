@@ -12,27 +12,28 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 
 | Peran | Nama Lengkap | Kelas |
 | :--- | :--- | :--- |
-| **Ketua Kelompok** | [Nama Lengkap Ketua] | [Kelas Kalian] |
-| Anggota 1 | [Nama Lengkap Anggota 1] | [Kelas Kalian] |
-| Anggota 2 | [Nama Lengkap Anggota 2] | [Kelas Kalian] |
-| **Nama Sekolah/Institusi** | [Nama Sekolah/Institusi Kalian] | |
+| **Ketua Kelompok** | Muhammad Rangga Maulana | XI-TJKT 2 |
+| Anggota 1 | Aji Sanjani | XI-TJKT 2 |
+| Anggota 2 | Aldy Fahri Firmansyah| XI-TJKT 2 |
+| Anggota 2 | Siti Zhaira Ulul Albab | XI-TJKT 2 |
+| **Nama Sekolah/Institusi** | SMK Negeri 1 Soreang | |
 
 #### 1.2. Spesifikasi Alat dan Bahan (Host) 🛠️
 
 | Komponen | Deskripsi / Versi |
 | :--- | :--- |
-| **Virtualisasi** | [Versi VMware Workstation yang Digunakan, contoh: VMware Workstation 17 Pro] |
-| **Sistem Operasi Host** | [OS yang digunakan di laptop/PC utama, contoh: Windows 11 / macOS Sonoma] |
-| **RAM Host (Minimal)** | [RAM Minimal yang digunakan di Host, contoh: 8 GB] |
-| **CPU Host** | [Tuliskan jenis/seri CPU, contoh: Intel Core i5 Generasi ke-10] |
+| **Virtualisasi** | Vmware 17 Pro |
+| **Sistem Operasi Host** | OS yang kami gunakan adalah Windows 10 (Cracked) |
+| **RAM Host (Minimal)** | 4GB |
+| **CPU Host** | i3-4130 |
 
 #### 1.3. Spesifikasi Server Virtual (VM) 🖥️
 
 | Spesifikasi | Detail |
 | :--- | :--- |
 | **Sistem Operasi Tamu (Guest OS)** | Debian Trixie (12.x) |
-| **Alamat IP Server** | `[Tuliskan Alamat IP Lokal Server]` |
-| **RAM VM** | [Jumlah RAM yang dialokasikan untuk VM, contoh: 2 GB] |
+| **Alamat IP Server** | `103.193.178.63` |
+| **RAM VM** | 2Gb |
 | **vCPU** | [Jumlah Core CPU yang dialokasikan untuk VM, contoh: 2 Core] |
 | **Web Server yang Dipilih** | **[Apache2 / Nginx / OpenLiteSpeed]** |
 | **Versi PHP yang Dipakai** | **[mod_php / php-fpm / lsphp]** |
