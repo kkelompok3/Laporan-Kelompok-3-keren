@@ -15,7 +15,7 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 | **Ketua Kelompok** | Muhammad Rangga Maulana | XI-TJKT 2 |
 | Anggota 1 | Aji Sanjani | XI-TJKT 2 |
 | Anggota 2 | Aldy Fahri Firmansyah| XI-TJKT 2 |
-| Anggota 2 | Siti Zhaira Ulul Albab | XI-TJKT 2 |
+| Anggota 3 | Siti Zhaira Ulul Albab | XI-TJKT 2 |
 | **Nama Sekolah/Institusi** | SMK Negeri 1 Soreang | |
 
 #### 1.2. Spesifikasi Alat dan Bahan (Host) 🛠️
