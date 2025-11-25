@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Siti Zhaira - Pink Modern 2 Kolom</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter dan menetapkan warna dasar Pink yang Cerah dan Bersih */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF4F5; /* Hampir Putih, Sedikit Pink */
+        }
+        /* Kelas kustom untuk warna Pink Utama (Soft Medium Pink) - Latar belakang kolom kiri */
+        .main-pink {
+            background-color: #FFB6C1; /* Light Pink / Pink Muda */
+            color: #830026; /* Dark Pink untuk teks kontras */
+        }
+        /* Kelas kustom untuk warna Accent (Deep Pink) - Aksen Garis & Heading */
+        .pink-accent-bg {
+            background-color: #FF69B4; /* Deep Pink */
+            color: white;
+        }
+        .pink-text {
+            color: #FF69B4; /* Deep Pink */
+        }
+        /* Efek bayangan lucu dan lembut */
+        .cute-shadow {
+            box-shadow: 6px 6px 0px 0px #FFC0CB; /* Bayangan Pink Pastel */
+        }
+        /* Styling untuk foto agar berbentuk lingkaran */
+        .profile-photo {
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 0 3px #FF69B4; /* Border Aksen Pink */
+        }
+        /* Styling untuk garis waktu vertikal */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #FFC0CB; /* Garis Pink Muda */
+        }
+        .timeline-circle {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background-color: #FF69B4; /* Lingkaran Pink Tua */
+            border-radius: 50%;
+            border: 3px solid white;
+            z-index: 10;
+        }
+        /* Styling untuk kemampuan (Rating dots) */
+        .rating-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 4px;
+        }
+        .dot-filled {
+            background-color: #FF69B4; /* Pink Tua */
+        }
+        .dot-empty {
+            background-color: #FFC0CB; /* Pink Muda */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 lg:p-12">
+
+    <div class="max-w-6xl mx-auto cute-shadow bg-white rounded-3xl overflow-hidden shadow-2xl">
+        
+        <!-- STRUKTUR UTAMA CV: 2 KOLOM -->
+        <div class="grid grid-cols-1 lg:grid-cols-3">
+
+            <!-- KOLOM KIRI (70%): Pink Background -->
+            <section class="lg:col-span-1 main-pink p-8 sm:p-10 text-gray-800 space-y-8">
+                
+                <!-- NAMA DAN POSISI - Di CV Contoh Anda, ini ada di atas, tapi di sini kita buat di kolom kiri agar terpisah -->
+                <div class="mb-8">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-pink-accent-bg">
+                        Siti Zhaira
+                    </h1>
+                    <p class="mt-1 text-lg font-semibold text-gray-700">
+                        PELAJAR
+                    </p>
+                </div>
+
+                <!-- 1. FOTO PROFIL -->
+                <div class="text-center mb-8">
+                    <!-- Placeholder Foto -->
+                    <img src="WhatsApp Image 2025-10-25 at 10.06.40 AM.jpeg" alt="Foto Profil" class="profile-photo w-36 h-36 object-cover mx-auto">
+                </div>
+                
+                <!-- 2. KONTAK -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 border-b-2 border-pink-accent-bg/50 pb-2 text-pink-text">
+                        KONTAK
+                    </h2>
+                    <ul class="space-y-3 font-medium text-gray-700">
+                        <li class="flex items-center">
+                            <span class="mr-3 text-2xl pink-text">📧</span> sitizhaira92@gmail.com
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-3 text-2xl pink-text">📞</span> +62 895-1762-8057
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-3 text-2xl pink-text">📍 </span>   Bandung
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-3 text-2xl pink-text">🔗</span> ig: cciipaww__
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. KEMAMPUAN (SOFT & HARD SKILLS) -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 border-b-2 border-pink-accent-bg/50 pb-2 text-pink-text">
+                        KEMAMPUAN & KEAHLIAN
+                    </h2>
+                    
+                    <div class="space-y-2">
+                        <!-- Item Keahlian (Hard Skills) -->
+                        <div class="flex justify-between items-center font-medium">
+                            <span>perakitan</span>
+                            <div>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-empty"></span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center font-medium">
+                            <span>Instalasi sistem operasi</span>
+                            <div>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-empty"></span>
+                                <span class="rating-dot dot-empty"></span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center font-medium">
+                            <span>Disiplin dan tanggung jawab</span>
+                            <div>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center font-medium">
+                            <span>Kerja Tim</span>
+                            <div>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-filled"></span>
+                                <span class="rating-dot dot-empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOBI & MINAT -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 border-b-2 border-pink-accent-bg/50 pb-2 text-pink-text">
+                        HOBI & MINAT
+                    </h2>
+                    <p class="text-gray-700">
+                        Menulis Cerita, Fotografi, Berenang, Lari, Nonton.
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- KOLOM KANAN (70%): White Background -->
+            <section class="lg:col-span-2 bg-white p-8 sm:p-10 space-y-8">
+                
+                <!-- 1. PROFIL (RINGKASAN) - Di CV Contoh, ini adalah bagian pertama di kanan -->
+                <div>
+                    <div class="pink-accent-bg inline-block px-4 py-1 rounded-r-xl">
+                        <h2 class="text-2xl font-bold">PROFIL</h2>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mt-4 ml-2 border-l-4 border-pink-accent-bg pl-4">
+                        Saya adalah pelajar jurusan Teknik Komputer dan Jaringan (TKJ) yang memiliki minat besar dalam bidang teknologi informasi, terutama pada perakitan komputer, jaringan komputer, serta administrasi sistem. Terbiasa bekerja secara individu maupun dalam tim, memiliki semangat belajar tinggi, dan mampu beradaptasi dengan cepat terhadap perkembangan teknologi baru.
+                    </p>
+                </div>
+
+                <!-- 3. PENDIDIKAN (TIMELINE) -->
+                <div>
+                    <div class="pink-accent-bg inline-block px-4 py-1 rounded-r-xl">
+                        <h2 class="text-2xl font-bold">PENDIDIKAN</h2>
+                    </div>
+                    
+                    <div class="space-y-6 mt-6">
+
+                        <!-- Item Pendidikan 2 -->
+                        <div class="timeline-item">
+                            <span class="timeline-circle"></span>
+                            <p class="text-sm font-semibold text-gray-500">
+                                2015 - 2021
+                            </p>
+                            <h3 class="text-lg font-bold text-gray-800">
+                                SD Negeri cibiru
+                            </h3>
+                            <p class="text-gray-600 italic">
+                                Sekolah Dasar
+                            </p>
+                        </div>
+                        
+                        <!-- Item Pendidikan 2 -->
+                        <div class="timeline-item">
+                            <span class="timeline-circle"></span>
+                            <p class="text-sm font-semibold text-gray-500">
+                                2021 - 2024
+                            </p>
+                            <h3 class="text-lg font-bold text-gray-800">
+                                SMP Negeri 3 Soreang
+                            </h3>
+                            <p class="text-gray-600 italic">
+                                Sekolah Menengah Pertama
+                            </p>
+                        </div>
+                        
+                        <!-- Item Pendidikan 3 -->
+                        <div class="timeline-item">
+                            <span class="timeline-circle"></span>
+                            <p class="text-sm font-semibold text-gray-500">
+                                2024 - 2027
+                            </p>
+                            <h3 class="text-lg font-bold text-gray-800">
+                                SMK Negeri 1 Soreang
+                            </h3>
+                            <p class="text-gray-600 italic">
+                                Sekolah Menengah Kejuruan
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- ORGANISASI (TIMELINE) -->
+                <div>
+                    <div class="pink-accent-bg inline-block px-4 py-1 rounded-r-xl">
+                        <h2 class="text-2xl font-bold">ORGANISASI</h2>
+                    </div>
+                    
+                    <div class="space-y-6 mt-6">
+                        
+                        <!-- Item Pengalaman 1 -->
+                        <div class="timeline-item">
+                            <span class="timeline-circle"></span>
+                            <p class="text-sm font-semibold text-gray-500">
+                                2024 - 2025
+                            </p>
+                            <h3 class="text-lg font-bold text-gray-800">
+                                ANGGOTA OSIS
+                            </h3>
+                            <p class="text-gray-600">
+                                Aktif dalam divisi Keimanan dan Ketakwaan selama periode 2024 - 2025. Bertanggung jawab dalam menyusun progrm kerja bidang keagamaan sekolah, baik mingguan, bulanan, maupun tahunan.
+                            </p>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+</body>
+</html>

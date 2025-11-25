@@ -1,0 +1,164 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body dengan gradien keren */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container utama */
+.container {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animasi fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* Section umum */
+section {
+    padding: 30px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #f5576c;
+    margin-top: 5px;
+}
+
+/* Kontak */
+.contact ul {
+    list-style: none;
+}
+
+.contact li {
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.contact li:hover {
+    color: #667eea;
+}
+
+/* Pengalaman dan Pendidikan */
+.job, .edu-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.job:hover, .edu-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    color: #777;
+    font-style: italic;
+}
+
+/* Keterampilan */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.skill-list li {
+    background: #667eea;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.skill-list li:hover {
+    background: #f5576c;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+/* Responsivitas untuk mobile */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+    .skill-list {
+        justify-content: center;
+    }
+}

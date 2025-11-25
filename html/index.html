@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kelompok TKJ</title>
+  <style>
+    /* Umum */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background animasi */
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Partikel bintang bergerak */
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+      animation: particleFloat 15s infinite ease-in-out;
+    }
+
+    @keyframes particleFloat {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        transform: translate(var(--x), var(--y)) scale(1.5);
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 1;
+      }
+    }
+
+    /* Gelombang DNA ganda */
+    .dna-wave {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .dna-strand {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(45deg, #38bdf8, #60a5fa);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Grid lines bergerak */
+    .grid-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.15), transparent);
+      animation: gridMove 20s infinite linear;
+    }
+
+    .grid-line.horizontal {
+      width: 100%;
+      height: 1px;
+      left: 0;
+    }
+
+    .grid-line.vertical {
+      width: 1px;
+      height: 100%;
+      top: 0;
+    }
+
+    @keyframes gridMove {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Orbs melayang */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.4), rgba(96, 165, 250, 0.1));
+      filter: blur(40px);
+      animation: orbFloat 25s infinite ease-in-out alternate;
+    }
+
+    @keyframes orbFloat {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(100px, -80px) scale(1.2);
+      }
+      66% {
+        transform: translate(-80px, 100px) scale(0.9);
+      }
+      100% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+    }
+
+    /* Lingkaran konsentris */
+    .ripple {
+      position: absolute;
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      border-radius: 50%;
+      animation: rippleEffect 8s infinite ease-out;
+    }
+
+    @keyframes rippleEffect {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+      100% {
+        width: 600px;
+        height: 600px;
+        opacity: 0;
+      }
+    }
+
+    /* Binary Matrix Rain */
+    .binary-rain {
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #38bdf8;
+      text-shadow: 0 0 5px rgba(56, 189, 248, 0.8);
+      animation: binaryFall linear infinite;
+      opacity: 0.7;
+      font-weight: bold;
+    }
+
+    @keyframes binaryFall {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Network Nodes */
+    .network-node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+      animation: nodePulse 3s infinite ease-in-out;
+    }
+
+    @keyframes nodePulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+      }
+      50% {
+        transform: scale(1.5);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 1);
+      }
+    }
+
+    /* Network Lines */
+    .network-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+      transform-origin: left center;
+      animation: lineGlow 4s infinite ease-in-out;
+    }
+
+    @keyframes lineGlow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    /* Binary Code Background */
+    .binary-bg {
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: rgba(56, 189, 248, 0.15);
+      white-space: nowrap;
+      animation: binaryScroll 30s linear infinite;
+    }
+
+    @keyframes binaryScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
+      text-align: center;
+      padding: 3rem 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      animation: fadeDown 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(56, 189, 248, 0.1) 50%, transparent 70%);
+      animation: shine 8s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: #38bdf8;
+      text-shadow: 0 0 15px rgba(56,189,248,0.5);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      color: #e2e8f0;
+    }
+
+    /* Bagian Tim */
+    .team {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .team h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #60a5fa;
+      text-shadow: 0 0 10px rgba(96,165,250,0.4);
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    /* Kartu Anggota */
+    .card {
+      background-color: rgba(30,41,59,0.95);
+      border-radius: 15px;
+      padding: 1rem;
+      width: 250px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #38bdf8, #60a5fa, #38bdf8);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(5deg);
+      box-shadow: 0 10px 20px rgba(56,189,248,0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .card h3 {
+      margin: 1rem 0 0.5rem;
+      color: #38bdf8;
+    }
+
+    .card p {
+      margin: 0.3rem 0;
+      color: #e2e8f0;
+    }
+
+    /* Modal Pop-up */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15,23,42,0.95);
+      justify-content: center;
+      align-items: center;
+      animation: fadeInBg 0.4s ease;
+    }
+
+    .modal-content {
+      background-color: #1e293b;
+      border-radius: 15px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      transform: scale(0.7);
+      opacity: 0;
+      animation: popIn 0.4s forwards;
+      box-shadow: 0 0 30px rgba(56,189,248,0.3);
+      border: 1px solid rgba(56,189,248,0.2);
+    }
+
+    .modal-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 15px rgba(56,189,248,0.6);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #38bdf8;
+      transform: scale(1.1);
+    }
+
+    #modal-nama {
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+
+    #modal-deskripsi {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #e2e8f0;
+    }
+
+    /* Animasi */
+    @keyframes fadeInBg {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0f172a;
+      border-top: 1px solid #1e293b;
+      margin-top: 3rem;
+      color: #94a3b8;
+    }
+
+    /* Responsivitas */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .card {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .team {
+        padding: 1rem;
+      }
+      
+      .card {
+        width: 90%;
+      }
+      
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background animasi -->
+  <div class="background-animation" id="backgroundAnimation"></div>
+
+  <header>
+    <h1>Kelompok TKJ Keren</h1>
+    <p>Teknik Komputer dan Jaringan</p>
+    <p>Selamat datang di web kami</p>
+  </header>
+
+  <section class="team">
+    <h2>Anggota Kelompok</h2>
+    <div class="card-container">
+
+      <div class="card fade-in" data-nama="rangga" data-kelas="XI TKJ 2" data-keahlian="Jaringan Komputer" data-deskripsi="Rangga adalah ahli jaringan komputer yang berpengalaman mengkonfigurasi router, switch, dan topologi LAN.">
+        <img src="img/fd938d55-4b86-4d19-a4b5-f08c5b8c6f5a.jpg" alt="rangga">
+        <h3>Nama: Rangga</h3>
+        <p>Kelas: XI TKJ 2</p>
+        <p>Keahlian: Jaringan Komputer</p>
+      </div>
+
+      <div class="card fade-in" data-nama="aji" data-kelas="XI TKJ 2" data-keahlian="Desain Web" data-deskripsi="Aji sangat mahir dalam desain web, HTML, CSS, dan UI modern.">
+        <img src="img/d786c656-09df-445d-92c6-cbee8bc5654c.jpg" alt="aji">
+        <h3>Nama: Aji</h3>
+        <p>Kelas: XI TKJ 2</p>
+        <p>Keahlian: Desain Web</p>
+      </div>
+
+      <div class="card fade-in" data-nama="aldi" data-kelas="XI TKJ 2" data-keahlian="Server dan Linux" data-deskripsi="Aldi fokus pada sistem operasi server, instalasi Linux, dan manajemen jaringan.">
+        <img src="img/65866ce1-383b-4fca-b219-0b184af1a488.jpg" alt="aldi">
+        <h3>Nama: Aldi</h3>
+        <p>Kelas: XI TKJ 2</p>
+        <p>Keahlian: Server dan Linux</p>
+      </div>
+
+      <div class="card fade-in" data-nama="zhaira" data-kelas="XI TKJ 2" data-keahlian="Pemrograman Dasar" data-deskripsi="Zhaira ahli dalam dasar-dasar logika pemrograman dan pembuatan aplikasi sederhana.">
+        <img src="img/fbe2d0e9-ff32-4fc4-8dbd-339bc1b52159.jpg" alt="zhaira">
+        <h3>Nama: Zhaira</h3>
+        <p>Kelas: XI TKJ 2</p>
+        <p>Keahlian: Pemrograman Dasar</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kelompok TKJ - Semua Hak Dilindungi</p>
+  </footer>
+
+  <!-- Modal Pop-up -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Foto Anggota">
+      <h2 id="modal-nama"></h2>
+      <p><strong>Kelas:</strong> <span id="modal-kelas"></span></p>
+      <p><strong>Keahlian:</strong> <span id="modal-keahlian"></span></p>
+      <p id="modal-deskripsi"></p>
+    </div>
+  </div>
+
+  <script>
+    // Membuat background animasi yang lebih advanced
+    function createBackgroundAnimation() {
+      const background = document.getElementById('backgroundAnimation');
+      
+      // 1. Membuat Binary Matrix Rain (seperti The Matrix)
+      createBinaryRain();
+      
+      // 2. Membuat Network Nodes & Lines
+      createNetworkVisualization();
+      
+      // 3. Membuat Binary Code Background
+      createBinaryBackground();
+      
+      // 4. Membuat Partikel Bintang
+      const particleCount = 50;
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+        const endX = (Math.random() - 0.5) * 400;
+        const endY = (Math.random() - 0.5) * 400;
+        
+        particle.style.left = `${startX}px`;
+        particle.style.top = `${startY}px`;
+        particle.style.setProperty('--x', `${endX}px`);
+        particle.style.setProperty('--y', `${endY}px`);
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        
+        background.appendChild(particle);
+      }
+      
+      // 5. Membuat DNA Double Helix
+      createDNAHelix();
+      
+      // 6. Membuat Grid Lines
+      const gridLineCount = 8;
+      for (let i = 0; i < gridLineCount; i++) {
+        // Horizontal lines
+        const hLine = document.createElement('div');
+        hLine.classList.add('grid-line', 'horizontal');
+        hLine.style.top = `${(i / gridLineCount) * 100}%`;
+        hLine.style.animationDelay = `${i * 2}s`;
+        background.appendChild(hLine);
+        
+        // Vertical lines
+        const vLine = document.createElement('div');
+        vLine.classList.add('grid-line', 'vertical');
+        vLine.style.left = `${(i / gridLineCount) * 100}%`;
+        vLine.style.animationDelay = `${i * 2 + 1}s`;
+        background.appendChild(vLine);
+      }
+      
+      // 7. Membuat Orbs melayang
+      const orbCount = 5;
+      for (let i = 0; i < orbCount; i++) {
+        const orb = document.createElement('div');
+        orb.classList.add('orb');
+        
+        const size = Math.random() * 200 + 150;
+        orb.style.width = `${size}px`;
+        orb.style.height = `${size}px`;
+        orb.style.left = `${Math.random() * 100}%`;
+        orb.style.top = `${Math.random() * 100}%`;
+        orb.style.animationDelay = `${i * 3}s`;
+        orb.style.animationDuration = `${Math.random() * 20 + 20}s`;
+        
+        background.appendChild(orb);
+      }
+      
+      // 8. Membuat Ripple Effects di beberapa titik
+      const ripplePoints = [
+        { x: 20, y: 30 },
+        { x: 80, y: 70 },
+        { x: 50, y: 50 }
+      ];
+      
+      ripplePoints.forEach((point, index) => {
+        setInterval(() => {
+          const ripple = document.createElement('div');
+          ripple.classList.add('ripple');
+          ripple.style.left = `${point.x}%`;
+          ripple.style.top = `${point.y}%`;
+          ripple.style.marginLeft = '-300px';
+          ripple.style.marginTop = '-300px';
+          
+          background.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 8000);
+        }, 8000 + index * 2500);
+      });
+    }
+
+    // Fungsi Binary Matrix Rain
+    function createBinaryRain() {
+      const background = document.getElementById('backgroundAnimation');
+      const columnCount = 20;
+      
+      for (let i = 0; i < columnCount; i++) {
+        setInterval(() => {
+          const binaryRain = document.createElement('div');
+          binaryRain.classList.add('binary-rain');
+          
+          // Generate random binary string
+          let binaryText = '';
+          const length = Math.floor(Math.random() * 15) + 10;
+          for (let j = 0; j < length; j++) {
+            binaryText += Math.random() > 0.5 ? '1' : '0';
+            if (j % 4 === 3) binaryText += ' '; // Spasi setiap 4 digit
+          }
+          
+          binaryRain.textContent = binaryText;
+          binaryRain.style.left = `${(i / columnCount) * 100}%`;
+          binaryRain.style.animationDuration = `${Math.random() * 5 + 8}s`;
+          binaryRain.style.animationDelay = `${Math.random() * 3}s`;
+          
+          background.appendChild(binaryRain);
+          
+          setTimeout(() => {
+            binaryRain.remove();
+          }, 13000);
+        }, Math.random() * 3000 + 2000);
+      }
+    }
+
+    // Fungsi Network Visualization
+    function createNetworkVisualization() {
+      const background = document.getElementById('backgroundAnimation');
+      const nodeCount = 12;
+      const nodes = [];
+      
+      // Buat nodes
+      for (let i = 0; i < nodeCount; i++) {
+        const node = document.createElement('div');
+        node.classList.add('network-node');
+        
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        node.style.left = `${x}%`;
+        node.style.top = `${y}%`;
+        node.style.animationDelay = `${Math.random() * 3}s`;
+        
+        background.appendChild(node);
+        nodes.push({ element: node, x, y });
+      }
+      
+      // Buat garis penghubung antar nodes
+      for (let i = 0; i < nodeCount; i++) {
+        for (let j = i + 1; j < nodeCount; j++) {
+          // Hanya hubungkan beberapa nodes secara acak
+          if (Math.random() > 0.7) {
+            const line = document.createElement('div');
+            line.classList.add('network-line');
+            
+            const x1 = nodes[i].x;
+            const y1 = nodes[i].y;
+            const x2 = nodes[j].x;
+            const y2 = nodes[j].y;
+            
+            const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+            
+            line.style.width = `${distance}%`;
+            line.style.left = `${x1}%`;
+            line.style.top = `${y1}%`;
+            line.style.transform = `rotate(${angle}deg)`;
+            line.style.animationDelay = `${Math.random() * 4}s`;
+            
+            background.appendChild(line);
+          }
+        }
+      }
+    }
+
+    // Fungsi Binary Code Background
+    function createBinaryBackground() {
+      const background = document.getElementById('backgroundAnimation');
+      const rowCount = 15;
+      
+      for (let i = 0; i < rowCount; i++) {
+        const binaryBg = document.createElement('div');
+        binaryBg.classList.add('binary-bg');
+        
+        // Generate long binary string
+        let binaryText = '';
+        for (let j = 0; j < 200; j++) {
+          binaryText += Math.random() > 0.5 ? '1' : '0';
+          if (j % 8 === 7) binaryText += '  '; // Spasi setiap 8 bit (1 byte)
+        }
+        binaryText += binaryText; // Duplikat untuk seamless scroll
+        
+        binaryBg.textContent = binaryText;
+        binaryBg.style.top = `${(i / rowCount) * 100}%`;
+        binaryBg.style.left = '0';
+        binaryBg.style.animationDuration = `${Math.random() * 20 + 30}s`;
+        binaryBg.style.animationDelay = `${Math.random() * 5}s`;
+        
+        background.appendChild(binaryBg);
+      }
+    }
+
+    // Fungsi untuk membuat DNA Double Helix
+    function createDNAHelix() {
+      const background = document.getElementById('backgroundAnimation');
+      const dnaWave = document.createElement('div');
+      dnaWave.classList.add('dna-wave');
+      
+      const points = 60;
+      const radius = 80;
+      const centerX = window.innerWidth / 2;
+      
+      for (let i = 0; i < points; i++) {
+        // Strand pertama
+        const strand1 = document.createElement('div');
+        strand1.classList.add('dna-strand');
+        
+        // Strand kedua (berlawanan fase)
+        const strand2 = document.createElement('div');
+        strand2.classList.add('dna-strand');
+        
+        const angle = (i / points) * Math.PI * 4;
+        const y = (i / points) * window.innerHeight;
+        
+        // Posisi strand 1
+        const x1 = centerX + Math.sin(angle) * radius;
+        strand1.style.left = `${x1}px`;
+        strand1.style.top = `${y}px`;
+        
+        // Posisi strand 2 (berlawanan)
+        const x2 = centerX - Math.sin(angle) * radius;
+        strand2.style.left = `${x2}px`;
+        strand2.style.top = `${y}px`;
+        
+        // Animasi mengalir
+        strand1.style.animation = `dnaFlow 8s infinite ease-in-out ${i * 0.1}s`;
+        strand2.style.animation = `dnaFlow 8s infinite ease-in-out ${i * 0.1 + 4}s`;
+        
+        dnaWave.appendChild(strand1);
+        dnaWave.appendChild(strand2);
+      }
+      
+      background.appendChild(dnaWave);
+      
+      // Tambahkan animasi DNA flow
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes dnaFlow {
+          0%, 100% {
+            transform: translateX(0) scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateX(20px) scale(1.5);
+            opacity: 1;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Animasi scroll untuk kartu
+    function handleScrollAnimation() {
+      const cards = document.querySelectorAll('.fade-in');
+      const windowHeight = window.innerHeight;
+      
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < windowHeight - 100) {
+          card.classList.add('show');
+        }
+      });
+    }
+
+    // Modal functionality
+    function setupModal() {
+      const modal = document.getElementById('modal');
+      const closeBtn = document.querySelector('.close-btn');
+      const cards = document.querySelectorAll('.card');
+      
+      // Buka modal saat kartu diklik
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          const imgSrc = this.querySelector('img').src;
+          const nama = this.getAttribute('data-nama');
+          const kelas = this.getAttribute('data-kelas');
+          const keahlian = this.getAttribute('data-keahlian');
+          const deskripsi = this.getAttribute('data-deskripsi');
+          
+          document.getElementById('modal-img').src = imgSrc;
+          document.getElementById('modal-nama').textContent = nama.charAt(0).toUpperCase() + nama.slice(1);
+          document.getElementById('modal-kelas').textContent = kelas;
+          document.getElementById('modal-keahlian').textContent = keahlian;
+          document.getElementById('modal-deskripsi').textContent = deskripsi;
+          
+          modal.style.display = 'flex';
+        });
+      });
+      
+      // Tutup modal
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      // Tutup modal saat klik di luar konten
+      window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    // Inisialisasi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+      createBackgroundAnimation();
+      setupModal();
+      handleScrollAnimation();
+      
+      // Tambahkan event listener untuk scroll
+      window.addEventListener('scroll', handleScrollAnimation);
+    });
+  </script>
+</body>
+</html>
