@@ -44,15 +44,52 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jari
 
 #### 2.1. Persiapan Dasar (Debian Trixie di VMware)
 
-1.  Melakukan *update* dan *upgrade* sistem.
-    ```bash
-    sudo apt update
-    sudo apt upgrade
+Langkah 1: Setup Awal Sistem
 
+```bash
+# Masuk sebagai super user
+sudo su -
 
-    ```
-2.  Memastikan konfigurasi jaringan (Bridge/NAT/Host-Only) sudah benar.
+# Perbarui paket sistem
+apt update && apt upgrade -y
 
+# Install paket-paket penting
+apt install -y wget curl nano net-tools openssh-server ufw
+```
+Langkah 2: Setting Jaringan Static IP
+
+```bash
+# Edit konfigurasi jaringan
+nano /etc/network/interfaces
+
+# Tambahkan setting IP statis
+auto eth0
+iface eth0 inet static
+    address 103.193.178.63
+    netmask 255.255.255.0
+    gateway 103.193.178.1
+    dns-nameservers 8.8.8.8 8.8.4.4
+
+# Restart layanan jaringan
+systemctl restart networking
+
+# Cek IP address
+ip addr show eth0
+```
+Langkah 3: Konfigurasi Keamanan
+
+```bash
+# Aktifkan SSH
+systemctl start ssh
+systemctl enable ssh
+
+# Setting firewall
+ufw allow 22/tcp    # Port SSH
+ufw allow 80/tcp    # Port HTTP
+ufw allow 443/tcp   # Port HTTPS
+ufw allow 7080/tcp  # Port Web Admin
+ufw enable
+```
 #### 2.2. Instalasi dan Konfigurasi Web Server 🌐
 
 Kami menggunakan **Open lite speed (OLS)**. Berikut langkah-langkah utamanya:
@@ -122,53 +159,104 @@ Save → Graceful Restart
 
 Kami menggunakan lsphp sebagai modul PHP bawaan OpenLiteSpeed.
 
-* **Instalasi PHP:**
-    ```bash
-    sudo apt install lsphp81 lsphp81-common lsphp81-mysql lsphp81-curl lsphp81-xml lsphp81-zip -y
+Langkah 1: Konfigurasi External App
 
-    sudo apt install php-fpm php-mysql
-    ```
-* **Integrasi:**
-    Integrasi PHP dengan OpenLiteSpeed:
+Menu: Server Configuration → External App
 
-Menambahkan eksternal app dengan type LiteSpeed SAPI App via Web Admin Panel.
+Klik Add → Pilih LiteSpeed SAPI App → Next
 
-Menambahkan script handler agar file .php diproses oleh lsphp81.
+Isi data:
 
-Path eksekusi PHP biasanya:
-```path php
-/usr/local/lsws/lsphp81/bin/lsphp
+```text
+Name: lsphp84
+Address: uds://tmp/lshttpd/lsphp.sock
+Command: /usr/local/lsws/lsphp84/bin/lsphp
+Max Connections: 35
+Persistent Connection: Yes
 ```
+Save → Graceful Restart
 
+Langkah 2: Konfigurasi Script Handler
+
+Menu: Server Configuration → Script Handler
+
+Konfigurasi:
+
+```text
+Suffixes: php
+Handler Type: LiteSpeed SAPI
+Handler Name: lsphp84
+```
+Save → Graceful Restart
+
+Langkah 3: Testing PHP Configuration
+
+```bash
+# Buat file test PHP
+sudo nano /usr/local/lsws/Example/html/test.php
+
+# Isi dengan:
+<?php
+echo "<h1>OpenLiteSpeed + LSPHP Test Page</h1>";
+echo "<p>PHP Version: " . phpversion() . "</p>";
+echo "<p>Server Software: " . $_SERVER['SERVER_SOFTWARE'] . "</p>";
+
+// Test MySQL connection
+if (extension_loaded('mysqli')) {
+    echo "<p style='color: green;'>✅ MySQLi Extension: Loaded</p>";
+} else {
+    echo "<p style='color: red;'>❌ MySQLi Extension: Not Loaded</p>";
+}
+?>
+```
 #### 2.4. Implementasi SSL (HTTPS) 🔒
 
 Kami menggunakan self-signed certificate untuk mengaktifkan HTTPS.
 
-1.  Membuat direktori untuk *certificate*.
-   ``` Bash
-sudo mkdir -p /etc/ssl/litespeed/
+Langkah 1: Generate SSL Certificate
+
+```bash
+# Buat folder SSL
+sudo mkdir -p /etc/ssl/private
+cd /etc/ssl/private
+
+# Generate self-signed certificate
+sudo openssl req -x509 -newkey rsa:2048 -nodes -keyout self.key -out self.crt -days 365
+
+# Set permissions
+sudo chmod 600 self.key
+sudo chmod 644 self.crt
 ```
-2.  Membuat *Key* dan *Certificate* menggunakan OpenSSL.
-   ```bash
-sudo openssl req -x509 -nodes -days 365 \
--newkey rsa:2048 \
--keyout /etc/ssl/litespeed/self.key \
--out /etc/ssl/litespeed/self.crt
+Langkah 2: Konfigurasi SSL di OpenLiteSpeed
+
+Menu: Listeners → Add → +
+
+Isi data:
+
+```text
+Listener Name: SSL
+IP Address: ANY
+Port: 443
+Secure: Yes
 ```
-3.  Konfigurasi Listener HTTPS di OpenLiteSpeed:
+Virtual Host Mappings: Example, Domains: *
 
-Buka panel admin:
-https://IP_SERVER:7080
+Tab SSL → isi:
 
-Listener → Add → Port: 443
-
-Pilih SSL Certificate & Key:
-```pilih
-/etc/ssl/litespeed/self.crt
-/etc/ssl/litespeed/self.key
+```text
+Private Key File: /etc/ssl/private/self.key
+Certificate File: /etc/ssl/private/self.crt
 ```
+Save → Graceful Restart
 
----
+Langkah 3: Testing SSL Configuration
+
+~~~bash
+# Test HTTPS connection
+curl -I -k https://103.193.178.63
+
+# Test dari browser: https://103.193.178.63
+~~~
 
 ### 3. 📊 Analisis Web Server
 
@@ -176,9 +264,9 @@ Berdasarkan pengalaman kami dalam proyek ini, berikut adalah analisis kelebihan 
 
 | Aspek | Kelebihan ([NAMA WEB SERVER]) 👍 | Kekurangan ([NAMA WEB SERVER]) 👎 |
 | :--- | :--- | :--- |
-| **Performa & Kecepatan** | [Tuliskan kelebihannya.] | [Tuliskan kekurangannya.] |
-| **Kemudahan Konfigurasi**| Tersedia web admin GUI Sehingga konfigurasi gampang| [Struktur konfigurasi berbeda dari Apache/Nginx, perlu adaptasi.] |
-| **Fitur & Modularitas** | [Built-in cache (LSCache) sangat cepat, dukungan OpenLiteSpeed API.] | [Tuliskan kekurangannya.] |
+| **Performa & Kecepatan** | Event-driven architecture yang sangat cepat, caching built-in | Kurang familiar bagi pemula dibanding Apache |
+| **Kemudahan Konfigurasi**| Tersedia web admin GUI Sehingga konfigurasi gampang| Struktur konfigurasi berbeda dari Apache/Nginx, perlu adaptasi. |
+| **Fitur & Modularitas** | Built-in caching dan optimization features] | Module ecosystem tidak seluas Apache|
 
 ---
 
@@ -186,19 +274,33 @@ Berdasarkan pengalaman kami dalam proyek ini, berikut adalah analisis kelebihan 
 
 #### 4.1. Kesan Selama Proses Pengerjaan ✨
 
-[Tuliskan kesan anggota kelompok, misalnya: "Kami merasa mendapatkan banyak ilmu baru, terutama dalam praktik Version Control menggunakan Git dan GitHub yang belum pernah kami lakukan sebelumnya."]
+Kami sangat antusias mempelajari OpenLiteSpeed yang merupakan web server high-performance. Pengalaman konfigurasi melalui WebAdmin Console memberikan wawasan baru tentang manajemen server yang user-friendly. Kami juga merasa senang bisa menerapkan teori jaringan yang dipelajari di kelas ke dalam praktik nyata.
 
 #### 4.2. Kendala dan Solusi yang Diterapkan 💡
 
 | Kendala yang Kalian Hadapi 🚧 | Solusi yang Ditemukan ✅ |
 | :--- | :--- |
-| [Tuliskan kendala teknis atau kolaborasi lain yang Kalian hadapi.] | [Jelaskan solusi spesifik Kalian.] |
+| Kesulitan memahami konfigurasi LSPHP di OpenLiteSpeed | Mempelajari dokumentasi resmi dan tutorial online untuk memahami External App configuration |
+| Port default OpenLiteSpeed (8088) berbeda dengan standar (80) | Mengubah konfigurasi listener melalui WebAdmin Console ke port 80 |
 
 ---
 
 ### 5. 📂 Dokumentasi Konten Website
 
 Seluruh *source code* (Halaman Utama dan Halaman Profil) yang berada di *document root* server telah disalin dan di-*commit* ke dalam folder `/html` di *repository* GitHub ini.
+
+Struktur File Website:
+```bash
+text
+/usr/local/lsws/Example/html/
+├── index.html          # Halaman default OpenLiteSpeed
+├── index.php           # Halaman PHP info
+├── test.php            # Halaman testing PHP
+└── profile/           # Folder halaman profil kelompok
+    ├── index.php
+    ├── style.css
+    └── images/
+```
 
 ---
 
@@ -210,4 +312,3 @@ Seluruh proses pengerjaan telah direkam dan diunggah ke YouTube.
 
 [![Thumbnail Video Pengerjaan](https://img.youtube.com/vi/1-qlNtQS1OA/0.jpg)](https://www.youtube.com/watch?v=1-qlNtQS1OA)
 
-**PETUNJUK:** Ganti semua teks di dalam tanda kurung siku `[ ... ]` dengan informasi proyek yang relevan.
