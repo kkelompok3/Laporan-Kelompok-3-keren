@@ -293,13 +293,40 @@ Struktur File Website:
 ```bash
 text
 /usr/local/lsws/Example/html/
-├── index.html          # Halaman default OpenLiteSpeed
-├── index.php           # Halaman PHP info
-├── test.php            # Halaman testing PHP
-└── profile/           # Folder halaman profil kelompok
-    ├── index.php
-    ├── style.css
-    └── images/
+├── adminer/                       # Folder Adminer (database management)
+│   └── index.php                  # Script Adminer utama
+├── aji/                           # Folder profil Aji
+│   ├── aji.html                   # Halaman profil Aji
+│   └── style.css                  # Style halaman Aji
+├── aldy/                          # Folder profil Aldy
+│   ├── data.php                   # Script proses data Aldy
+│   └── index.php                  # Halaman utama Aldy
+├── blocked/                       # Folder halaman blokir
+│   └── index.html                 # Halaman akses diblokir
+├── css/                           # Folder file CSS global
+│   ├── bootstrap.min.css          # Bootstrap CSS
+│   └── custom.css                 # CSS custom website
+├── error404.html                  # Halaman error 404
+├── img/                           # Folder gambar global
+│   └── 404-icon.png               # Ikon untuk error 404
+├── phpinfo.php                    # Informasi PHP server
+├── protected/                     # Folder halaman yang dilindungi
+│   └── index.html                 # Halaman protected
+├── rangga/                        # Folder profil Rangga
+│   ├── img/                       # Gambar untuk Rangga
+│   │   └── profil.jpeg            # Foto profil Rangga
+│   ├── index.html                 # Halaman profil Rangga
+│   ├── script.js                  # Script JS untuk Rangga
+│   └── style.css                  # Style CSS Rangga
+├── script.js                      # Script JS global
+├── style.css                      # Style CSS global
+├── index.html                     # Halaman utama website
+├── upload.html                    # Halaman form upload file
+├── upload.php                     # Proses upload file
+├── zhaira/                        # Folder profil Zhaira
+│   ├── index.html                 # Halaman profil Zhaira
+│   └── WhatsApp Image ... .jpeg   # Gambar profil Zhaira
+     
 ```
 
 ---
