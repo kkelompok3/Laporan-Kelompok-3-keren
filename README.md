@@ -5,11 +5,11 @@ Proyek ini dibuat untuk memenuhi tugas mata pelajaran Administrasi Sistem Jaring
 
 1. 👥 Informasi Kelompok dan Spesifikasi Lingkungan Praktik
 1.1. Informasi Kelompok
-|Peran|	Nama Lengkap|	Kelas|
-|Ketua Kelompok|	Muhammad Rangga Maulana	XII TJKT 2|
-|Anggota 1|	Aji Sanjani| XII TJKT 2|
-|Anggota 2|	Aldy Fahri Firmansyah|	XII TJKT 2|
-|Anggota 3|	Siti Zhaira Ulul Albab|	XII TJKT 2|
+|Peran |	Nama Lengkap |	Kelas |
+|Ketua Kelompok |	Muhammad Rangga Maulana	XII TJKT 2 |
+|Anggota 1 |	Aji Sanjani| XII TJKT 2 |
+|Anggota 2 |	Aldy Fahri Firmansyah |	XII TJKT 2 |
+|Anggota 3 |	Siti Zhaira Ulul Albab | 	XII TJKT 2|
 |Nama Sekolah/Institusi	SMK Negeri 1 Teknologi Informatika	
 1.2. Spesifikasi Alat dan Bahan (Host) 🛠️
 |Komponen|	Deskripsi / Versi|
