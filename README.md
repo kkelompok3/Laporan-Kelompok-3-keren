@@ -1,6 +1,6 @@
 # 💻  PENGEMBANGAN WEB SERVER DAN APLIKASI SEDERHANA
 
-**Proyek:** [Memconfiguras Web server Menggunakan Open lite speed (OLS)]
+**Proyek:** Memconfiguras Web server Menggunakan Open lite speed (OLS)
 
 Proyek ini dibuat untuk memenuhi tugas mata pelajaran **Administrasi Sistem Jaringan (ASJ)**, yang merupakan salah satu elemen Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan (**CP KKTKJ**) pada program TJKT. Proyek ini berfokus pada implementasi layanan Web Server, konfigurasi PHP, dan pengamanan koneksi menggunakan SSL/HTTPS.
 
@@ -262,7 +262,7 @@ curl -I -k https://103.193.178.63
 
 Berdasarkan pengalaman kami dalam proyek ini, berikut adalah analisis kelebihan dan kekurangan dari *Web Server* yang kami gunakan:
 
-| Aspek | Kelebihan ([NAMA WEB SERVER]) 👍 | Kekurangan ([NAMA WEB SERVER]) 👎 |
+| Aspek | Kelebihan (OLS) 👍 | Kekurangan (OLS) 👎 |
 | :--- | :--- | :--- |
 | **Performa & Kecepatan** | Event-driven architecture yang sangat cepat, caching built-in | Kurang familiar bagi pemula dibanding Apache |
 | **Kemudahan Konfigurasi**| Tersedia web admin GUI Sehingga konfigurasi gampang| Struktur konfigurasi berbeda dari Apache/Nginx, perlu adaptasi. |
