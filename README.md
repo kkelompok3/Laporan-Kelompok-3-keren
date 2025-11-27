@@ -111,7 +111,7 @@ Langkah 2: Instalasi OpenLiteSpeed dan PHP
 sudo apt install openlitespeed -y
 
 # Install LSPHP 8.4 dan extensions
-sudo apt install lsphp84 lsphp84-common lsphp84-curl lsphp84-mysql lsphp84-json lsphp84-opcache -y
+sudo apt install lsphp84 lsphp84-mysql
 ```
 Langkah 3: Manajemen Service
 
