@@ -337,5 +337,5 @@ Seluruh proses pengerjaan telah direkam dan diunggah ke YouTube.
 
 **Link Video YouTube:**
 
-[![Thumbnail Video Pengerjaan](https://share.google/gtCKWAt8soxKGmWYr)](https://youtu.be/vb3iFqJPpDE?feature=shared)
+[![Thumbnail Video Pengerjaan]([https://share.google/gtCKWAt8soxKGmWYr](https://www.google.com/imgres?imgurl=https://upcloud.com/media/openlitespeed-default-listener-general-edit.png&tbnid=XrgGzHxmf_Ja4M&vet=1&imgrefurl=https://translate.google.com/translate?u%3Dhttps://upcloud.com/resources/tutorials/install-openlitespeed-fast-secure-web-server/%26hl%3Did%26sl%3Den%26tl%3Did%26client%3Dimgs&docid=fH5WQScyRWhJZM&w=1200&h=830&itg=1&hl=en-GB&source=sh/x/im/m1/4&kgs=9bac10da073456db&shem=damc,isst,shrtsdl&utm_source=damc,isst,shrtsdl,sh/x/im/m1/4))](https://youtu.be/vb3iFqJPpDE?feature=shared)
 
