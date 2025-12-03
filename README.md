@@ -337,5 +337,5 @@ Seluruh proses pengerjaan telah direkam dan diunggah ke YouTube.
 
 **Link Video YouTube:**
 
-[![Thumbnail Video Pengerjaan](https://share.google/gtCKWAt8soxKGmWYr)](htt[s://youtu.be/vb3iFqJPpDE?feature=shared)
+[![Thumbnail Video Pengerjaan](https://share.google/gtCKWAt8soxKGmWYr)](https://youtu.be/vb3iFqJPpDE?feature=shared)
 
