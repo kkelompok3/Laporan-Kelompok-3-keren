@@ -337,10 +337,7 @@ Seluruh proses pengerjaan telah direkam dan diunggah ke YouTube.
 
 **Link Video YouTube:**
 
-[![Thumbnail Video Pengerjaan] <a href="[https://youtu.be/vb3iFqJPpDE](https://youtu.be/vb3iFqJPpDE?feature=shared)" target="_blank">
-    <img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Music-icon.png/800px-Music-icon.png](https://share.google/wJs0liJaKy4nA4pnC)" 
-         alt="Thumbnail Video" 
-         style="width:300px; border-radius:10px;">
-</a>
+[![Thumbnail Video](https://www.google.com/url?sa=i&url=https%3A%2F%2Fteknocerdas.com%2Fserba-serbi%2Finstal-openlitespeed-pada-ubuntu-20-04%2F&psig=AOvVaw04vi2sqCkpg577Pj64zPrn&ust=1764891567843000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCODHg8rLopEDFQAAAAAdAAAAABAE)](https://youtu.be/vb3iFqJPpDE?feature=shared)
+
 
 
